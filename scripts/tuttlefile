@@ -19,12 +19,14 @@ file://../data/countries.geojson <- file://ne_10m_admin_0_countries.geojson, fil
     cat ne_10m_admin_0_countries.geojson | sed 's/"admin": /"name": /g' | sed 's/"iso_a3": /"ISO3166-1-Alpha-3": /g'  > ../data/countries.geojson
 
     
-file://ok <- file://../data/countries.geojson, file://../datapackage.json ! python
+file://validation <- file://../data/countries.geojson, file://../datapackage.json ! python
 # Ensure the datapackage that have been created is valide
     import datapackage
     dp = datapackage.DataPackage('../datapackage.json')
     try:
         dp.validate()
     except datapackage.exceptions.ValidationError as e:
-        # Handle the ValidationError
         print e
+        raise
+    with open('validation') as f:
+        f.write("datapackae is valid\n")
