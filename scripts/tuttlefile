@@ -28,5 +28,5 @@ file://validation <- file://../data/countries.geojson, file://../datapackage.jso
     except datapackage.exceptions.ValidationError as e:
         print e
         raise
-    with open('validation') as f:
+    with open('validation', 'w') as f:
         f.write("datapackae is valid\n")
