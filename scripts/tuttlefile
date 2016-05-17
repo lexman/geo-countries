@@ -12,4 +12,4 @@ file://../data <-
 
 file://../data/countries.geojson <- file://ne_10m_admin_0_countries.geojson, file://../data
 # Change the name of the fields after conversion
-    cat ne_10m_admin_0_countries.geojson | sed 's/"admin": /"name": /g' | sed 's/"iso_a3": /"ISO3166-1-Alpha-3": /g'  > ../data/countries.geojson
+    cat ne_10m_admin_0_countries.geojson | sed 's/"ADMIN": /"name": /g' | sed 's/"ISO_A3": /"ISO3166-1-Alpha-3": /g'  > ../data/countries.geojson
